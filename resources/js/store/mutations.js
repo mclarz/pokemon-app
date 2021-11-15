@@ -1,10 +1,13 @@
 let mutations = {
 
-    fetchAll(state) {
-        return state.pokemon;
+    ALL_POKEMON(state, data) {
+        return state.pokemon = data;
     },
-    fetchPokemonById(state) {
-        
+    POKEMON_DETAILS(state, data) {
+        return state.pokemon_details = data
+    },
+    fetchLikedPokemon(state) {
+
     }
 
 }

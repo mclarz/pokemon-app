@@ -19,11 +19,9 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 });
 
-Route::middleware(['auth'])->group(function () {
-
-    Route::get('/liked_pokemon', [App\Http\Controllers\PokemonController::class, 'likedPokemon']);
-    Route::get('/hate_pokemon',[App\Http\Controllers\PokemonController::class,'hatedPokemon']);
-    
-    Route::get('/users_pokemon',[App\Http\Controllers\PokemonController::class,'usersPokemon']);
-
-});
+Route::get('/getLikedPokemon', [App\Http\Controllers\PokemonController::class, 'likedPokemon']);
+Route::get('/getHatePokemon',[App\Http\Controllers\PokemonController::class,'hatedPokemon']);
+Route::get('/usersPokemon',[App\Http\Controllers\PokemonController::class,'usersPokemon']);
+Route::post('/pokemonById',[App\Http\Controllers\PokemonController::class,'fetchPokemonById']);
+Route::post('/searchPokemon',[App\Http\Controllers\PokemonController::class,'searchPokemonByName']);
+Route::get('/allPokemon', [App\Http\Controllers\PokemonController::class,'fetchPokemonAPI']);

@@ -26,8 +26,11 @@
         "vue-template-compiler": "^2.6.12"
     },
     "dependencies": {
+        "@alkeincodes/vuejs-pagination": "^1.1.2",
+        "@alkeincodes/vuejs-skeleton-loading": "^1.0.1",
         "bootstrap-vue": "^2.21.2",
         "vue-router": "^3.5.3",
+        "vue-sweetalert2": "^5.0.2",
         "vuex": "^3.6.2"
     }
 }

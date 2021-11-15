@@ -1,12 +1,14 @@
 <template>
     <div>
-        <b-navbar toggleable="lg" type="light" variant="light">
-            <b-navbar-brand to="/">Home</b-navbar-brand>
+         <b-navbar type="dark" variant="dark">
+            <b-navbar-brand to="/home">Pokemon</b-navbar-brand>
             <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
             <b-collapse id="nav-collapse" is-nav>
-            <!-- <b-navbar-nav>
-                <b-nav-item to="/">Home</b-nav-item>
-            </b-navbar-nav> -->
+            <b-navbar-nav>
+                <b-nav-item to="/favorite">Favorites</b-nav-item>
+                <b-nav-item to="/dislike" >Dislike</b-nav-item>
+            </b-navbar-nav>
+           
             </b-collapse>
         </b-navbar>
     </div>

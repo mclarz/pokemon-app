@@ -51,7 +51,33 @@ class PokemonController extends Controller
     public function fetchPokemonById(PokemonAPI $pokemonAPI , Request $request)
     {
         try {
-            $apiResult = $pokemonAPI->searchPokemonByID($request->pokemon_id);
+            $apiResult = $pokemonAPI->searchPokemonByIDorName($request->pokemon_id);
+            $this->response = [
+                'success' => true,
+                'result' => $apiResult
+            ];
+
+        } catch (Exception $e) {
+            $this->response = [
+                'success' => false,
+                'error' => $e->getMessage()
+            ];
+        }
+
+        return response()->json($this->response);
+    }
+    
+    /**
+     * Search pokemon by Name
+     *
+     * @param  mixed $pokemonAPI
+     * @param  mixed $request
+     * @return void
+     */
+    public function searchPokemonByName(PokemonAPI $pokemonAPI, Request $request)
+    {
+        try {
+            $apiResult = $pokemonAPI->searchPokemonByIDorName($request->pokemon_name);
             $this->response = [
                 'success' => true,
                 'result' => $apiResult

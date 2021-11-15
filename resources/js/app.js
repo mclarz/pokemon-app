@@ -8,16 +8,23 @@ require('./bootstrap');
 
 import VueRouter from 'vue-router'
 
-import { BootstrapVue, IconsPlugin } from 'bootstrap-vue'
+import { BootstrapVue, IconsPlugin,AvatarPlugin } from 'bootstrap-vue'
+
 import '@fortawesome/fontawesome-free/css/all.css'
 import '@fortawesome/fontawesome-free/js/all.js'
 
+import Pagination from '@alkeincodes/vuejs-pagination'
+import '@alkeincodes/vuejs-pagination/dist/app.css'
+
+ 
 window.Vue = require('vue').default;
 
 
 Vue.use(VueRouter)
 Vue.use(BootstrapVue)
 Vue.use(IconsPlugin)
+Vue.use(AvatarPlugin)
+Vue.use(Pagination)
 
 import store from './store/index';
 import routes from './routes'

@@ -26,6 +26,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({});
 
 /***/ }),
@@ -119,13 +121,32 @@ var render = function () {
     [
       _c(
         "b-navbar",
-        { attrs: { toggleable: "lg", type: "light", variant: "light" } },
+        { attrs: { type: "dark", variant: "dark" } },
         [
-          _c("b-navbar-brand", { attrs: { to: "/" } }, [_vm._v("Home")]),
+          _c("b-navbar-brand", { attrs: { to: "/home" } }, [_vm._v("Pokemon")]),
           _vm._v(" "),
           _c("b-navbar-toggle", { attrs: { target: "nav-collapse" } }),
           _vm._v(" "),
-          _c("b-collapse", { attrs: { id: "nav-collapse", "is-nav": "" } }),
+          _c(
+            "b-collapse",
+            { attrs: { id: "nav-collapse", "is-nav": "" } },
+            [
+              _c(
+                "b-navbar-nav",
+                [
+                  _c("b-nav-item", { attrs: { to: "/favorite" } }, [
+                    _vm._v("Favorites"),
+                  ]),
+                  _vm._v(" "),
+                  _c("b-nav-item", { attrs: { to: "/dislike" } }, [
+                    _vm._v("Dislike"),
+                  ]),
+                ],
+                1
+              ),
+            ],
+            1
+          ),
         ],
         1
       ),
