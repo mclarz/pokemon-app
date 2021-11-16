@@ -103,7 +103,7 @@ class PokemonController extends Controller
     public function likedPokemon(PokemonService $pokemonService)
     {
         try {
-            $likedPokemon = $pokemonService->getLikedPokemon();
+            $likedPokemon = $pokemonService()->getLikedPokemon();
             $this->response = [
                 'success' => true,
                 'result' => $likedPokemon
@@ -145,11 +145,55 @@ class PokemonController extends Controller
 
         return response()->json($this->response);
     }
-
-    public function selectLikedPokemon()
+    
+    /**
+     * Add favorite pokemon
+     *
+     * @param  App/Services/PokemonService $pokemonService
+     * @param  Request $request
+     * @return void
+     */
+    public function createFavoritePokemon(PokemonService $pokemonService, Request $request)
     {
+        try {
+            $createFavorite = $pokemonService->createFavoritePokemon($request->pokemon_id);
+            $this->response = [
+                'success' => true,
+            ];
+        } catch (Exception $e) {
+            $this->response = [
+                'success' => false,
+                'error' => $e->getMessage()
+            ];
+        }
 
+        return response()->json($this->response);
     }
+    
+    /**
+     * Create hated pokemon
+     *
+     * @param  App/Services/PokemonService $pokemonService
+     * @param  Request $request
+     * @return void
+     */
+    public function createDislikePokemon(PokemonService $pokemonService, Request $request)
+    {
+        try {
+            $createDislike = $pokemonService->createDislikePokemon($request->pokemon_id);
+            $this->response = [
+                'success' => true,
+            ];
+        } catch (Exception $e) {
+            $this->response = [
+                'success' => false,
+                'error' => $e->getMessage()
+            ];
+        }
+
+        return response()->json($this->response);
+    }
+
 
     public function selectHatePokemon()
     {

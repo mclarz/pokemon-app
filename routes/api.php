@@ -14,14 +14,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
+Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 
 });
 
-Route::get('/getLikedPokemon', [App\Http\Controllers\PokemonController::class, 'likedPokemon']);
-Route::get('/getHatePokemon',[App\Http\Controllers\PokemonController::class,'hatedPokemon']);
-Route::get('/usersPokemon',[App\Http\Controllers\PokemonController::class,'usersPokemon']);
 Route::post('/pokemonById',[App\Http\Controllers\PokemonController::class,'fetchPokemonById']);
 Route::post('/searchPokemon',[App\Http\Controllers\PokemonController::class,'searchPokemonByName']);
 Route::get('/allPokemon', [App\Http\Controllers\PokemonController::class,'fetchPokemonAPI']);

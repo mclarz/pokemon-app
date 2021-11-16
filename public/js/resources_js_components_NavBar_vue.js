@@ -123,7 +123,7 @@ var render = function () {
         "b-navbar",
         { attrs: { type: "dark", variant: "dark" } },
         [
-          _c("b-navbar-brand", { attrs: { to: "/home" } }, [_vm._v("Pokemon")]),
+          _c("b-navbar-brand", { attrs: { to: "/" } }, [_vm._v("Pokemon")]),
           _vm._v(" "),
           _c("b-navbar-toggle", { attrs: { target: "nav-collapse" } }),
           _vm._v(" "),

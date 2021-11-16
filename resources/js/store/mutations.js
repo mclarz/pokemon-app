@@ -1,10 +1,11 @@
 let mutations = {
 
     ALL_POKEMON(state, data) {
-        return state.pokemon = data;
+        state.pokemon = data;
     },
     POKEMON_DETAILS(state, data) {
-        return state.pokemon_details = data
+        state.pokemon_details = data
+        state.showDetail = true
     },
     fetchLikedPokemon(state) {
 

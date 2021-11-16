@@ -3,30 +3,40 @@
 namespace App\Services;
 
 use App\Models\User;
-use PokemonRepository;
+use  App\Repositories\PokemonRepository as PokemonRepository;
+use Illuminate\Support\Facades\Auth;
 
 class PokemonService {
 
     protected $user;
-
-
-    public function __construct(User $user)
-    {
-        $this->user = $user;
-    }
-
+    
     public function getLikedPokemon()
     {
-        return (new PokemonRepository)->getLikedPokemon($this->user->id);
+        $userId = Auth::user()->id;
+        return app('App\Repositories\PokemonRepository')->getLikedPokemon($userId);
     }
 
     public function getHatedPokemon()
     {
-        return (new PokemonRepository)->getHatedPokemon($this->user->id);
+        $userId = Auth::user()->id;
+        return app('App\Repositories\PokemonRepository')->getHatedPokemon($userId);
     }
 
     public function userPokemonLists()
     {
-        return (new PokemonRepository)->userPokemonLists($this->user->id);
+        $userId = Auth::user()->id;
+        return app('App\Repositories\PokemonRepository')->userPokemonLists($userId);
+    }
+
+    public function createFavoritePokemon($pokemonId)
+    {
+        $userId = Auth::user()->id;
+        return app('App\Repositories\PokemonRepository')->createFavoritePokemon($pokemonId,$userId);
+    }
+
+    public function createDislikePokemon($pokemonId)
+    {
+        $userId = Auth::user()->id;
+        return app('App\Repositories\PokemonRepository')->createDislikePokemon($pokemonId,$userId);
     }
 }

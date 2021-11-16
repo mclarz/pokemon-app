@@ -18,7 +18,6 @@ class CreatePokemonTable extends Migration
             $table->integer('pokemon_id');
             $table->foreignId('user_id');
             $table->text('status')->comment('1- liked pokemon | 0 - hated pokemon');
-            $table->integer('limit');
             $table->timestamps();
             $table->softDeletes('deleted_at');
         });

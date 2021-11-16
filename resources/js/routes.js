@@ -3,7 +3,7 @@ import Favorite from './components/Favorite.vue'
 import DisLike from './components/DisLike.vue'
 let routes = [
     {
-        path: '/home',
+        path: '/',
         component: Home,
     },
     {

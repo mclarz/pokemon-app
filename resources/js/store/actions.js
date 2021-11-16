@@ -1,29 +1,44 @@
 import axios from "axios";
-// getLikedPokemon
-// getHatePokemon
-// usersPokemon
-// pokemonById
-// allPokemon
-
-
 let actions = {
 
     
-    onLike({commit}, id) {
+    onFavoritePokemon({commit}, id) {
+        return new Promise( (resolve, reject) => {
+            axios.post('/setFavoritePokemon', {'pokemon_id' : id})
+            .then(({res}) => {
+                console.log("res", res)
+                resolve('SUCCESS')
 
+            }).catch(err => {
+                console.log('Error Found: ' + err)
+            })
+        } )
     },
 
-    onDisLike({commit}, id) {
+    onDislikePokemon({commit}, id) {
+
+        return new Promise( (resolve, reject) => {
+            axios.post('/setDislikePokemon', {'pokemon_id' : id})
+            .then(({res}) => {
+                console.log("res", res)
+                resolve('SUCCESS')
+
+            }).catch(err => {
+                console.log('Error Found: ' + err)
+            })
+        } )
 
     },
-
     searchPokemon({commit},name) {
         return new Promise( (resolve, reject) => {
-            axios.post('/api/searchPokemon', {'pokemon_name' : name})
+            axios.post('/searchPokemon', {'pokemon_name' : name})
             .then((res) => {
                 console.log("res", res)
                 let data = res.data.result
-                commit('ALL_POKEMON', data)
+                let allPokemon = [
+                    data.forms[0]
+                ]
+                commit('ALL_POKEMON', allPokemon)
                 resolve('SUCCESS')
 
             }).catch(err => {

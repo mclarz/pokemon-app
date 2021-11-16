@@ -5,6 +5,9 @@ let getters = {
     },
     pokemon_details: state => {
         return state.pokemon_details
+    },
+    pokemonId: state => {
+        return state.pokemonId   
     }
 }
 
