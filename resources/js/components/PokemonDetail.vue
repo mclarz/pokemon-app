@@ -21,9 +21,9 @@
         </b-list-group>
       </b-card>
       <b-button block size="lg" variant="primary" @click="onFavorite()"
-        >Favorite</b-button
+        >Set as Favorite</b-button
       >
-      <b-button block size="lg" variant="danger" @click="onDislike()">DisLike</b-button>
+      <b-button block size="lg" variant="danger" @click="onDislike()">Set as DisLike</b-button>
     </b-modal>
   </b-container>
 </template>
@@ -37,10 +37,24 @@ export default {
   },
   methods: {
     onFavorite() {
-        this.$store.dispatch('onFavoritePokemon',this.pokeDetails.id)
+        this.$store.dispatch('onFavoritePokemon',this.pokeDetails.id).then(() => {
+          Vue.swal({
+            title: 'Success',
+            text:'Set as favorite pokemon',
+            icon:'success'
+          });
+          this.$bvModal.hide('modal-1')
+        })
     },
-    dislikePokemon() {
-        this.$store.dispatch('onDislikePokemon',this.pokeDetails.id)
+    onDislike() {
+        this.$store.dispatch('onDislikePokemon',this.pokeDetails.id).then( () => {
+            Vue.swal({
+            title: 'Success',
+            html:'Set as <b style="color:red">hated</b> pokemon.',
+            icon:'success'
+          });
+          this.$bvModal.hide('modal-1')
+        })
     },
   },
   computed: {

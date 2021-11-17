@@ -7,9 +7,6 @@ let mutations = {
         state.pokemon_details = data
         state.showDetail = true
     },
-    fetchLikedPokemon(state) {
-
-    }
 
 }
 

@@ -2,17 +2,26 @@
     <div class="accordion" role="tablist">
     <b-card no-body class="mb-1">
       <b-card-header header-tag="header" class="p-1" role="tab">
-        <b-button block v-b-toggle.accordion-1 variant="default">Jesus Lara</b-button>
+        <b-button block v-b-toggle.accordion-1 variant="default">User 1</b-button>
       </b-card-header>
       <b-collapse id="accordion-1" accordion="my-accordion" role="tabpanel">
         <b-card-body>
-          <b-card-text>I start opened because <code>visible</code> is <code>true</code></b-card-text>
+          <b-card-text><b>Favorite</b> Pokemons:</b-card-text>
           <b-card-text>
                <div class="mb-4">
-                    <b-avatar></b-avatar>
-                    <b-avatar variant="primary" text="BV"></b-avatar>
-                    <b-avatar variant="info" src="https://placekitten.com/300/300"></b-avatar>
-                    <b-avatar variant="success" icon="people-fill"></b-avatar>
+                  <b-avatar button @click="" variant="primary" text="FF" class="align-baseline"></b-avatar>
+                  <b-avatar button @click="" variant="primary" text="FF" class="align-baseline"></b-avatar>
+                  <b-avatar button @click="" variant="primary" text="FF" class="align-baseline"></b-avatar>
+                  <b-avatar button @click="" variant="primary" text="FF" class="align-baseline"></b-avatar>
+                </div>
+          </b-card-text>
+          <b-card-text><b>Hated</b> Pokemons:</b-card-text>
+          <b-card-text>
+               <div class="mb-4">
+                  <b-avatar button @click="" variant="primary" text="FF" class="align-baseline"></b-avatar>
+                  <b-avatar button @click="" variant="primary" text="FF" class="align-baseline"></b-avatar>
+                  <b-avatar button @click="" variant="primary" text="FF" class="align-baseline"></b-avatar>
+                  <b-avatar button @click="" variant="primary" text="FF" class="align-baseline"></b-avatar>
                 </div>
           </b-card-text>
         </b-card-body>
@@ -21,28 +30,63 @@
 
     <b-card no-body class="mb-1">
       <b-card-header header-tag="header" class="p-1" role="tab">
-        <b-button block v-b-toggle.accordion-2 variant="default">Maeight Cabatana</b-button>
+        <b-button block v-b-toggle.accordion-2 variant="default">User 2</b-button>
       </b-card-header>
       <b-collapse id="accordion-2" accordion="my-accordion" role="tabpanel">
-        <b-card-body>
-          <b-card-text>{{ text }}</b-card-text>
+       <b-card-body>
+          <b-card-text><b>Favorite</b> Pokemons:</b-card-text>
+          <b-card-text>
+               <div class="mb-4">
+                  <b-avatar button @click="" variant="primary" text="FF" class="align-baseline"></b-avatar>
+                  <b-avatar button @click="" variant="primary" text="FF" class="align-baseline"></b-avatar>
+                  <b-avatar button @click="" variant="primary" text="FF" class="align-baseline"></b-avatar>
+                  <b-avatar button @click="" variant="primary" text="FF" class="align-baseline"></b-avatar>
+                </div>
+          </b-card-text>
+          <b-card-text><b>Hated</b> Pokemons:</b-card-text>
+          <b-card-text>
+               <div class="mb-4">
+                  <b-avatar button @click="" variant="primary" text="FF" class="align-baseline"></b-avatar>
+                  <b-avatar button @click="" variant="primary" text="FF" class="align-baseline"></b-avatar>
+                  <b-avatar button @click="" variant="primary" text="FF" class="align-baseline"></b-avatar>
+                  <b-avatar button @click="" variant="primary" text="FF" class="align-baseline"></b-avatar>
+                </div>
+          </b-card-text>
         </b-card-body>
       </b-collapse>
     </b-card>
 
     <b-card no-body class="mb-1">
       <b-card-header header-tag="header" class="p-1" role="tab">
-        <b-button block v-b-toggle.accordion-3 variant="default">Jetham Lara</b-button>
+        <b-button block v-b-toggle.accordion-3 variant="default">User 3</b-button>
       </b-card-header>
       <b-collapse id="accordion-3" accordion="my-accordion" role="tabpanel">
-        <b-card-body>
-          <b-card-text>{{ text }}</b-card-text>
+       <b-card-body>
+          <b-card-text><b>Favorite</b> Pokemons:</b-card-text>
+          <b-card-text>
+               <div class="mb-4">
+                  <b-avatar button @click="" variant="primary" text="FF" class="align-baseline"></b-avatar>
+                  <b-avatar button @click="" variant="primary" text="FF" class="align-baseline"></b-avatar>
+                  <b-avatar button @click="" variant="primary" text="FF" class="align-baseline"></b-avatar>
+                  <b-avatar button @click="" variant="primary" text="FF" class="align-baseline"></b-avatar>
+                </div>
+          </b-card-text>
+          <b-card-text><b>Hated</b> Pokemons:</b-card-text>
+          <b-card-text>
+               <div class="mb-4">
+                  <b-avatar button @click="" variant="primary" text="FF" class="align-baseline"></b-avatar>
+                  <b-avatar button @click="" variant="primary" text="FF" class="align-baseline"></b-avatar>
+                  <b-avatar button @click="" variant="primary" text="FF" class="align-baseline"></b-avatar>
+                  <b-avatar button @click="" variant="primary" text="FF" class="align-baseline"></b-avatar>
+                </div>
+          </b-card-text>
         </b-card-body>
       </b-collapse>
     </b-card>
   </div>
 </template>
 <script>
+import BAvatar from 'bootstrap-vue';
 export default {
     data() {
         return {

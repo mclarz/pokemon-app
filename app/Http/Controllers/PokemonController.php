@@ -103,10 +103,20 @@ class PokemonController extends Controller
     public function likedPokemon(PokemonService $pokemonService)
     {
         try {
-            $likedPokemon = $pokemonService()->getLikedPokemon();
+            $likedPokemon = $pokemonService->getLikedPokemon();
+            $data = [];
+            foreach ($likedPokemon as $pokemon) {
+                $pokeId = $pokemon->pokemon_id;
+                $apiService = new PokemonAPI();
+                $apiResult = $apiService->searchPokemonByIDorName($pokeId);
+                if ($apiResult) {
+                    $data[] = $apiResult['forms'][0];
+                }
+            }
+
             $this->response = [
                 'success' => true,
-                'result' => $likedPokemon
+                'result' => $data
             ];
 
         } catch (Exception $e) {
@@ -130,9 +140,19 @@ class PokemonController extends Controller
     {
         try {
             $hatedPokemon = $pokemonService->getHatedPokemon();
+            $data = [];
+            foreach ($hatedPokemon as $pokemon) {
+                $pokeId = $pokemon->pokemon_id;
+                $apiService = new PokemonAPI();
+                $apiResult = $apiService->searchPokemonByIDorName($pokeId);
+                if ($apiResult) {
+                    $data[] = $apiResult['forms'][0];
+                }
+            }
+
             $this->response = [
                 'success' => true,
-                'result' => $hatedPokemon
+                'result' => $data
             ];
 
         } catch (Exception $e) {

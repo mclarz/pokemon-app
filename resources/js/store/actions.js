@@ -29,6 +29,7 @@ let actions = {
         } )
 
     },
+
     searchPokemon({commit},name) {
         return new Promise( (resolve, reject) => {
             axios.post('/searchPokemon', {'pokemon_name' : name})
@@ -49,6 +50,31 @@ let actions = {
 
     fetchPokemonByUser({commit}, userId) {
 
+    },
+    fetchFavoritePokemon({commit}) {
+
+        return new Promise( (resolve, reject) => {
+            axios.get('/getLikedPokemon')
+            .then((res) => {
+                commit('ALL_POKEMON',res.data.result)
+                resolve('SUCCESS')
+            }).catch(err => {
+                console.log('Error Found: ' + err)
+            })
+        } )
+
+    },
+
+    fetchDislikePokemon({commit}) {
+        return new Promise( (resolve, reject) => {
+            axios.get('/getDislikePokemon')
+            .then((res) => {
+                commit('ALL_POKEMON',res.data.result)
+                resolve('SUCCESS')
+            }).catch(err => {
+                console.log('Error Found: ' + err)
+            })
+        } )
     },
 
     fetchPokemonById({commit}, pokemonId) {
