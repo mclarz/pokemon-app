@@ -25,7 +25,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/home', [App\Http\Controllers\HomeController::class, 'index']);    
 
     Route::get('/getLikedPokemon', [App\Http\Controllers\PokemonController::class, 'likedPokemon']);
-    Route::get('/getHatePokemon',[App\Http\Controllers\PokemonController::class,'hatedPokemon']);
+    Route::get('/getDislikePokemon',[App\Http\Controllers\PokemonController::class,'hatedPokemon']);
 
     Route::post('/setFavoritePokemon', [App\Http\Controllers\PokemonController::class, 'createFavoritePokemon']);
     Route::post('/setDislikePokemon', [App\Http\Controllers\PokemonController::class, 'createDislikePokemon']);
