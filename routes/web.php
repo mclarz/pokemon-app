@@ -31,7 +31,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::post('/setDislikePokemon', [App\Http\Controllers\PokemonController::class, 'createDislikePokemon']);
 
 
-    Route::get('/usersPokemon',[App\Http\Controllers\PokemonController::class,'usersPokemon']);
+    Route::get('/usersPokemon',[App\Http\Controllers\PokemonController::class,'userPokemonList']);
     Route::post('/pokemonById',[App\Http\Controllers\PokemonController::class,'fetchPokemonById']);
     Route::post('/searchPokemon',[App\Http\Controllers\PokemonController::class,'searchPokemonByName']);
     Route::get('/allPokemon', [App\Http\Controllers\PokemonController::class,'fetchPokemonAPI']);

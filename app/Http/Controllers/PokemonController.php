@@ -176,10 +176,18 @@ class PokemonController extends Controller
     public function createFavoritePokemon(PokemonService $pokemonService, Request $request)
     {
         try {
+            
             $createFavorite = $pokemonService->createFavoritePokemon($request->pokemon_id);
-            $this->response = [
-                'success' => true,
-            ];
+            if (!$createFavorite) {
+                $this->response = [
+                    'success' => false,
+                    'error' => 'You can only select up to 3 pokemons that are not exist.'
+                ];    
+            } else {
+                $this->response = [
+                    'success' => $createFavorite,
+                ];
+            }
         } catch (Exception $e) {
             $this->response = [
                 'success' => false,
@@ -201,9 +209,16 @@ class PokemonController extends Controller
     {
         try {
             $createDislike = $pokemonService->createDislikePokemon($request->pokemon_id);
-            $this->response = [
-                'success' => true,
-            ];
+            if (!$createDislike) {
+                $this->response = [
+                    'success' => false,
+                    'error' => 'You can only select 1 to 3 pokemons that are not exist.'
+                ];    
+            } else {
+                $this->response = [
+                    'success' => $createDislike,
+                ];
+            }
         } catch (Exception $e) {
             $this->response = [
                 'success' => false,
@@ -230,10 +245,10 @@ class PokemonController extends Controller
     {
 
         try {
-            $hatedPokemon = $pokemonService->getHatedPokemon();
+            $pokemon = $pokemonService->userPokemonLists();
             $this->response = [
                 'success' => true,
-                'result' => $hatedPokemon
+                'result' => $pokemon
             ];
 
         } catch (Exception $e) {

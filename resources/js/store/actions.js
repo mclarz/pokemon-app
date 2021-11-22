@@ -5,9 +5,9 @@ let actions = {
     onFavoritePokemon({commit}, id) {
         return new Promise( (resolve, reject) => {
             axios.post('/setFavoritePokemon', {'pokemon_id' : id})
-            .then(({res}) => {
+            .then((res) => {
                 console.log("res", res)
-                resolve('SUCCESS')
+                resolve(res)
 
             }).catch(err => {
                 console.log('Error Found: ' + err)
@@ -19,9 +19,9 @@ let actions = {
 
         return new Promise( (resolve, reject) => {
             axios.post('/setDislikePokemon', {'pokemon_id' : id})
-            .then(({res}) => {
+            .then((res) => {
                 console.log("res", res)
-                resolve('SUCCESS')
+                resolve(res)
 
             }).catch(err => {
                 console.log('Error Found: ' + err)
@@ -49,6 +49,19 @@ let actions = {
     },
 
     fetchPokemonByUser({commit}, userId) {
+
+        return new Promise( (resolve, reject) => {
+            axios.get('/usersPokemon')
+            .then((res) => {
+                console.log("res", res)
+                let data = res.data.result
+                commit('USER_POKEMON', data)
+                resolve('SUCCESS')
+
+            }).catch(err => {
+                console.log('Error Found: ' + err)
+            })
+        } )
 
     },
     fetchFavoritePokemon({commit}) {

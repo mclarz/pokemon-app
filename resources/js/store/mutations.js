@@ -7,6 +7,9 @@ let mutations = {
         state.pokemon_details = data
         state.showDetail = true
     },
+    USER_POKEMON(state, data) {
+        state.userPokemon = data
+    }
 
 }
 

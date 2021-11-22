@@ -3,12 +3,10 @@
 namespace App\Services;
 
 use App\Models\User;
-use  App\Repositories\PokemonRepository as PokemonRepository;
 use Illuminate\Support\Facades\Auth;
 
 class PokemonService {
 
-    protected $user;
     
     public function getLikedPokemon()
     {
@@ -24,8 +22,23 @@ class PokemonService {
 
     public function userPokemonLists()
     {
-        $userId = Auth::user()->id;
-        return app('App\Repositories\PokemonRepository')->userPokemonLists($userId);
+        $user = Auth::user();
+        $result = app('App\Repositories\PokemonRepository')->userPokemonLists($user->id);
+        $data = [];
+        
+        if ($result) {
+            foreach ($result as $res) {
+                $data[$res->id]['name'] = $res->name;
+                foreach ($res->pokemon as $pokemon) {
+                    if ($pokemon->status == 0) {
+                        $data[$res->id]['hated'][] = $pokemon;
+                    } else {
+                        $data[$res->id]['favorite'][] = $pokemon;
+                    }
+                }
+            }
+        }
+        return $data;
     }
 
     public function createFavoritePokemon($pokemonId)

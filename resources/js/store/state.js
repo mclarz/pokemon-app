@@ -2,7 +2,7 @@ let state = {
     pokemon: [],
     pokemon_details : [],
     pokemonId: '',
-    showDetail: false,
+    userPokemon: []
 }
 
 export default state;

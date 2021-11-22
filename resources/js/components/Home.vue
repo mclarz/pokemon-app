@@ -1,9 +1,12 @@
 <template>
-  <div>
+  <div class="p-3">
+    <br/><br/>
     <div class="col-md-12">
       <div class="row">
-        <div class="col-md-8">
-          <b-card class="mt-2">
+        <div class="col-md-9">
+          <b-card class="mt-2"
+            border-variant="primary"
+          >
             <b-card-title>List of Pokemon</b-card-title>
             <b-card-body>
               <b-input-group size="lg" class="mt-3">
@@ -48,11 +51,9 @@
             </b-card-body>
           </b-card>
         </div>
-        <div class="col-md-4">
+        <div class="col-md-3">
           <b-card class="mt-2"  border-variant="primary"
             header="List of Users"
-            header-bg-variant="primary"
-            header-text-variant="white"
             align="center">
        
             <user-pokemon></user-pokemon>

@@ -1,6 +1,7 @@
 import Home from './components/Home.vue'
 import Favorite from './components/Favorite.vue'
 import DisLike from './components/DisLike.vue'
+import Profile from './components/Profile.vue'
 let routes = [
     {
         path: '/',
@@ -13,6 +14,10 @@ let routes = [
     {
         path: '/dislike',
         component: DisLike,
+    },
+    {
+        path: '/profile',
+        component: Profile,
     },
 
     

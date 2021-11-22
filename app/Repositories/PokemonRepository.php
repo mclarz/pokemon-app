@@ -1,6 +1,7 @@
 <?php
 namespace App\Repositories;
 use App\Models\Pokemon;
+use App\Models\User;
 
 class PokemonRepository {
 
@@ -37,7 +38,7 @@ class PokemonRepository {
      */
     public function userPokemonLists($userId)
     {
-        return Pokemon::where('user_id','<>', $userId)->get();
+        return User::with(['pokemon'])->where('id','<>',$userId)->get();
 
     }
     
@@ -50,22 +51,21 @@ class PokemonRepository {
     public function createFavoritePokemon($pokemonId, $userId)
     {
         $model = new Pokemon();
-        $checkFavorite = $model->where('pokemon_id', $pokemonId)
-                                ->where('user_id', $userId)
+        $checkFavorite = $model->where('user_id', $userId)
                                 ->where('status', 1)
-                                ->count();
+                                ->get();
 
-        if ($checkFavorite < 3) {
+        if (in_array($pokemonId, $checkFavorite->pluck('pokemon_id')->toArray())) return false;
+        if (count($checkFavorite) >= 3) return false;
 
-            return $model->create([
-                'pokemon_id'    => $pokemonId,
-                'user_id'       => $userId,
-                'status'        => 1,
-            ]);
 
-        }
+        $model->create([
+            'pokemon_id'    => $pokemonId,
+            'user_id'       => $userId,
+            'status'        => 1,
+        ]);
+        return true;
 
-        return false;
     }
     
     /**
@@ -77,17 +77,21 @@ class PokemonRepository {
     public function createDislikePokemon($pokemonId, $userId)
     {
         $model = new Pokemon();
-        $checkDislike = $model->where('pokemon_id', $pokemonId)
-                                ->where('user_id', $userId)
+        $checkDislike = $model->where('user_id', $userId)
                                 ->where('status', 0)
-                                ->count();
-        if ($checkDislike < 3) {
-            return $model->create([
-                'pokemon_id'    => $pokemonId,
-                'user_id'       => $userId,
-                'status'        => 0,
-            ]);
-        }
-        return false;
+                                ->get();
+                                
+        if (in_array($pokemonId, $checkDislike->pluck('pokemon_id')->toArray())) return false; 
+        if (count($checkDislike) >= 3)  return false;
+        
+
+        
+        $model->create([
+            'pokemon_id'    => $pokemonId,
+            'user_id'       => $userId,
+            'status'        => 0,
+        ]);
+
+        return true;
     }
 }

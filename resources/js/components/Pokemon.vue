@@ -17,12 +17,31 @@
     </b-card>
   </div>
 </template>
+<style>
+span.b-avatar-img {
+  border-radius: inherit;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  -webkit-mask-image: radial-gradient(#fff, #000);
+  mask-image: radial-gradient(#fff, #000);
+}
+span.b-avatar-img  img {
+  vertical-align: middle;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+}
+</style>
 <script>
 export default {
   data() {
     return {
       pokemonDetails: {},
-      pokemonId: '',
+      pokemonId: "",
       pokeImage:
         "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/home/",
     };
